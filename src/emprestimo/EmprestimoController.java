@@ -1,5 +1,7 @@
 package emprestimo;
 
+import enums.Situacao;
+
 import java.util.List;
 
 public class EmprestimoController {
@@ -20,5 +22,9 @@ public class EmprestimoController {
 
     public void deletar(Emprestimo entity){
         emprestimoDAO.deletar(entity);
+    }
+
+    public void devolver(Emprestimo emprestimo) {
+        emprestimo.setSituacao(Situacao.DEVOLVIDO);
     }
 }
