@@ -21,14 +21,14 @@ public class EmprestimoDAO implements Crud<Emprestimo> {
 
     @Override
     public void salvar(Emprestimo entity) {
-        Emprestimo emprestimo = emprestimos.stream()
-                .filter(umEmprestimo -> umEmprestimo.getId() == entity.getId())
-                .findFirst().orElseThrow(() -> new NoSuchElementException("Emprestimo não encontrado"));
-        this.emprestimos.add(emprestimo);
+        this.emprestimos.add(entity);
     }
 
     @Override
     public void deletar(Emprestimo entity) {
-        this.emprestimos.remove(entity);
+        Emprestimo emprestimo = emprestimos.stream()
+                .filter(umEmprestimo -> umEmprestimo.getId() == entity.getId())
+                .findFirst().orElseThrow(() -> new NoSuchElementException("Emprestimo não encontrado"));
+        this.emprestimos.remove(emprestimo);
     }
 }
